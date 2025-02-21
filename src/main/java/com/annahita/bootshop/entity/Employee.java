@@ -1,0 +1,29 @@
+package com.annahita.bootshop.entity;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name = "TBL_EMPLOYEE")
+@Getter
+@Setter
+public class Employee {
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long employeeId;
+
+    @Column(name = "first_name")
+    @JsonProperty("fname")
+    private String firstName;
+
+    @Column(name="last_name")
+    private String lastName;
+
+    @Column(name="email")
+    private String email;
+
+}
