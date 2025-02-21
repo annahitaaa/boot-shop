@@ -6,15 +6,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "TBL_EMPLOYEE")
+@Table(name = "TBL_CUSTOMER")
 @Getter
 @Setter
-public class Employee {
+public class Customer {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long employeeId;
+    private Long customerId;
 
     @Column(name = "first_name")
     @JsonProperty("fname")

@@ -1,10 +1,10 @@
 package com.annahita.bootshop.repository;
 
-import com.annahita.bootshop.entity.Employee;
+import com.annahita.bootshop.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
 }
