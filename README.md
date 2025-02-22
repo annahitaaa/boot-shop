@@ -18,12 +18,12 @@ A simple Spring Boot application for a Online-Shop.
 ### Steps
 1. Clone the repository:
 ```
- git clone https://github.com/annahitaaa/onlineShop2.git
+ git clone https://github.com/annahitaaa/boot-shop.git
 
 ```
 2. Navigate into the project directory:
 ```
-cd onlineShop2
+cd boot-shop
 
 ```
 3.Build the project:
