@@ -1,0 +1,65 @@
+spring:
+  application:
+    name: boot-shop
+  datasource:
+    url: jdbc:mysql://localhost:3306/bootshop
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  profiles:
+    active: production
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  error:
+    whitelabel:
+      enabled: false
+
+info:
+  app:
+    name: boot Shop
+    author:
+      name: Annahita
+
+  
+  
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: all
+
+--- #production
+spring:
+  config:
+    activate:
+      on-profile: production
+
+  jpa:
+    show-sql: false
+
+logging:
+  level:
+    root: info
+
+--- #dev
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+logging:
+  level:
+    root: debug
