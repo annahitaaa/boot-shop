@@ -1,6 +1,8 @@
 package com.annahita.bootshop.services;
 
+import com.annahita.bootshop.dto.CustomerDto;
 import com.annahita.bootshop.entity.Customer;
+import com.annahita.bootshop.mapper.CustomerMapper;
 import com.annahita.bootshop.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -14,7 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 @AllArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
-    CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
+    private final CustomerMapper customerMapper;
 
     @Transactional(readOnly = true)
     @Override
@@ -25,7 +28,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Transactional
     @Modifying
     @Override
-    public void save(Customer customer) {
+    public void save(CustomerDto customerDto) {
+        customerRepository.save(customerMapper.convertToEntity(customerDto));
+    }
+
+    @Override
+    public void update(Customer customer) {
         customerRepository.save(customer);
     }
 
@@ -36,6 +44,7 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.deleteById(customerId);
     }
 
+    @Transactional
     @Override
     public Customer findById(Long customerId) {
        return customerRepository.findById(customerId).orElseThrow(()-> new RuntimeException("Customer not found"));

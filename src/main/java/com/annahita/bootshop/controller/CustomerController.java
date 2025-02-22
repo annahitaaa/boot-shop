@@ -1,5 +1,6 @@
 package com.annahita.bootshop.controller;
 
+import com.annahita.bootshop.dto.CustomerDto;
 import com.annahita.bootshop.entity.Customer;
 import com.annahita.bootshop.services.CustomerService;
 import lombok.AllArgsConstructor;
@@ -31,14 +32,14 @@ public class CustomerController {
     }
 
     @PostMapping("/customer")
-    public Customer addCustomer(@RequestBody Customer customer) {
-        customerService.save(customer);
-        return customer;
+    public CustomerDto addCustomer(@RequestBody CustomerDto customerDto) {
+        customerService.save(customerDto);
+        return customerDto;
     }
 
     @PutMapping("/customer")
     public Customer updateCustomer(@RequestBody Customer customer) {
-        customerService.save(customer);
+        customerService.update(customer);
         return customer;
     }
 
