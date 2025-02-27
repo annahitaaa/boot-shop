@@ -8,11 +8,11 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
   profiles:
-    active: test
+    active: dev
 
 server:
   port: 8080
@@ -43,40 +43,3 @@ management:
 
 
 
---- #prod
-spring:
-  config:
-    activate:
-      on-profile: prod
-  jpa:
-    show-sql: false
-  datasource:
-    url: jdbc:mysql://localhost:3306/prod
-
-logging:
-  level:
-    root: info
-
---- #dev
-spring:
-  config:
-    activate:
-      on-profile: dev
-  datasource:
-    url: jdbc:mysql://localhost:3306/dev
-
-logging:
-  level:
-    root: debug
-
---- #test
-spring:
-  config:
-    activate:
-      on-profile: test
-  datasource:
-    url: jdbc:mysql://localhost:3306/test
-
-logging:
-  level:
-    root: info

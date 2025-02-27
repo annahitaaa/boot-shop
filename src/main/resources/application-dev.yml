@@ -1,0 +1,14 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/dev
+  liquibase:
+    enabled: true
+
+
+
+logging:
+  level:
+    root: info
