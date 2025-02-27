@@ -29,7 +29,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Modifying
     @Override
     public void save(CustomerDto customerDto) {
-        customerRepository.save(customerMapper.convertToEntity(customerDto));
+        customerRepository.save(customerMapper.toEntity(customerDto));
     }
 
     @Override
