@@ -1,28 +1,61 @@
 package com.annahita.bootshop.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
+import com.annahita.bootshop.validator.Phone;
+import lombok.*;
+
+
+import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
+
+import java.io.Serializable;
 @Entity
-@Table(name = "TBL_CUSTOMER")
 @Getter
 @Setter
-public class Customer {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Customer extends Audit implements Serializable {
 
+    private static final Long serialVersionUID = 101l;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerId;
 
-    @Column(name = "first_name")
-    private String firstName;
+    @NotEmpty
+    @Size(min=5,max=30)
+    private String customerName;
 
-    @Column(name="last_name")
-    private String lastName;
+    @NotEmpty
+    @Email
+    private String customerEmailAddress;
 
-    @Column(name="email")
-    private String email;
+    @NotEmpty
+    @Phone
+    private String customerPhoneNumber;
+
+    @NotEmpty
+    @Size(min=5,max=30)
+    private String username;
+
+    @NotEmpty
+    private String password;
+
+    private Boolean enabled;
+
+    @Valid
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "shippingAddressId")
+    private ShippingAddress shippingAddress;
+
+    @Valid
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "billingAddressId")
+    private BillingAddress billingAddress;
+
+//    @OneToOne
+//    @JoinColumn(name="cartId")
+//    private Cart cart;
 
 }

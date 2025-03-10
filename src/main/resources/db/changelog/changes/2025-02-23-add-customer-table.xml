@@ -1,12 +1,3 @@
 <changeSet id="1-add-user-table" author="johndoe">
-    <createTable tableName="user">
-        <column name="id" type="int" autoIncrement="true">
-            <constraints primaryKey="true"/>
-        </column>
-        <column name="username" type="varchar(255)"/>
-        <column name="password" type="varchar(255)"/>
-    </createTable>
-    <rollback>
-        <dropTable tableName="user"/>
-    </rollback>
+
 </changeSet>

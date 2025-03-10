@@ -1,11 +1,11 @@
 spring:
   config:
     activate:
-      on-profile: prod
+      on-profile: uat
   jpa:
     show-sql: false
   datasource:
-    url: jdbc:mysql://localhost:3306/prod
+    url: jdbc:mysql://localhost:3306/uatboot
   liquibase:
     enabled: false
 
