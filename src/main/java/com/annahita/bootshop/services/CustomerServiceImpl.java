@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
     private final CustomerMapper customerMapper;
+    private PasswordEncoder passwordEncoder;
+
 
     @Transactional(readOnly = true)
     @Override
@@ -29,7 +32,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Modifying
     @Override
     public void save(CustomerDto customerDto) {
-        customerRepository.save(customerMapper.toEntity(customerDto));
+        Customer customer = customerMapper.toEntity(customerDto);
+        customer.setEnabled(true);
+        customer.setPassword(passwordEncoder.encode(customerDto.getPassword()));
+        customerRepository.save(customer);
     }
 
     @Override

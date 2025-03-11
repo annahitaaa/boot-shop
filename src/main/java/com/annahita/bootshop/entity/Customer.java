@@ -54,8 +54,8 @@ public class Customer extends Audit implements Serializable {
     @JoinColumn(name = "billingAddressId")
     private BillingAddress billingAddress;
 
-//    @OneToOne
-//    @JoinColumn(name="cartId")
-//    private Cart cart;
+    @OneToOne
+    @JoinColumn(name="cartId")
+    private Cart cart;
 
 }

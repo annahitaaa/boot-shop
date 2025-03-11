@@ -14,7 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class BillingAddress extends Audit implements Serializable {
 
-    private static final Long serialVersionUID = 105l;
+    private static final Long serialVersionUID = 103l;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
