@@ -3,11 +3,15 @@ package com.annahita.bootshop.mapper;
 import com.annahita.bootshop.dto.CustomerDto;
 import com.annahita.bootshop.entity.Customer;
 import org.mapstruct.*;
-import org.mapstruct.factory.Mappers;
 
-@Mapper(componentModel = "spring", uses = {ShippingAddressMapper.class, BillingAddressMapper.class})
-public interface  CustomerMapper {
-    CustomerMapper INSTANCE = Mappers.getMapper(CustomerMapper.class);
+@Mapper(componentModel = "spring",
+        uses = {
+                ShippingAddressMapper.class,
+                BillingAddressMapper.class,
+                UserMapper.class
+        })
+public interface CustomerMapper {
+
 
     CustomerDto toDTO(Customer customer);
 

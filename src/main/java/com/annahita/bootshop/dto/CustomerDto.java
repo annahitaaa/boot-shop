@@ -31,8 +31,11 @@ public class CustomerDto {
     private String password;
 
     @Valid
-    private ShippingAddressDto shippingAddress;
+    private ShippingAddressDto shippingAddressDto;
 
     @Valid
-    private BillingAddressDto billingAddress;
+    private BillingAddressDto billingAddressDto;
+
+    @Valid
+    private UserDto userDto;
 }

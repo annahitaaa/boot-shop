@@ -34,7 +34,7 @@ public class CustomerServiceImpl implements CustomerService {
     public void save(CustomerDto customerDto) {
         Customer customer = customerMapper.toEntity(customerDto);
         customer.setEnabled(true);
-        customer.setPassword(passwordEncoder.encode(customerDto.getPassword()));
+//        customer.setPassword(passwordEncoder.encode(customerDto.getPassword()));
         customerRepository.save(customer);
     }
 

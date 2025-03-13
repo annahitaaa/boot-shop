@@ -35,12 +35,10 @@ public class Customer extends Audit implements Serializable {
     @Phone
     private String customerPhoneNumber;
 
-    @NotEmpty
-    @Size(min=5,max=30)
-    private String username;
-
-    @NotEmpty
-    private String password;
+    @Valid
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userId")
+    private User user;
 
     private Boolean enabled;
 
@@ -54,8 +52,8 @@ public class Customer extends Audit implements Serializable {
     @JoinColumn(name = "billingAddressId")
     private BillingAddress billingAddress;
 
-    @OneToOne
-    @JoinColumn(name="cartId")
-    private Cart cart;
+//    @OneToOne
+//    @JoinColumn(name="cartId")
+//    private Cart cart;
 
 }
