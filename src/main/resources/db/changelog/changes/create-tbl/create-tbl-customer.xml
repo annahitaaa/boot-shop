@@ -1,0 +1,66 @@
+<changeSet id="create-tbl-customer" author="Annahita">
+    <createTable tableName="TBL_CUSTOMER">
+        <!-- Primary Key -->
+        <column name="customerId" type="BIGINT" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false" primaryKeyName="pk_customer"/>
+        </column>
+        <!-- Basic fields -->
+        <column name="customerName" type="VARCHAR(30)">
+            <constraints nullable="false"/>
+        </column>
+        <column name="customerEmailAddress" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+        </column>
+        <column name="customerPhoneNumber" type="VARCHAR(20)">
+            <constraints nullable="false"/>
+        </column>
+        <column name="enabled" type="BOOLEAN"/>
+
+        <!-- Foreign keys for one-to-one relationships -->
+        <column name="userId" type="BIGINT"/>
+        <column name="shippingAddressId" type="BIGINT"/>
+        <column name="billingAddressId" type="BIGINT"/>
+        <column name="cartId" type="BIGINT"/>
+    </createTable>
+
+    <!-- Optionally create indexes for the foreign key columns -->
+    <createIndex indexName="idx_customer_userId" tableName="CUSTOMER">
+        <column name="userId"/>
+    </createIndex>
+    <createIndex indexName="idx_customer_shipping_address_id" tableName="CUSTOMER">
+        <column name="shippingAddressId"/>
+    </createIndex>
+    <createIndex indexName="idx_customer_billing_address_id" tableName="CUSTOMER">
+        <column name="billingAddressId"/>
+    </createIndex>
+    <createIndex indexName="idx_customer_cartId" tableName="CUSTOMER">
+        <column name="cartId"/>
+    </createIndex>
+</changeSet>
+
+        <!-- Add foreign key constraints -->
+<changeSet id="customer-fks" author="Annahita">
+<addForeignKeyConstraint
+        constraintName="fk_customer_user"
+        baseTableName="CUSTOMER" baseColumnNames="userId"
+        referencedTableName="USER" referencedColumnNames="userId"
+        deferrable="false" initiallyDeferred="false" onDelete="CASCADE"/>
+
+<addForeignKeyConstraint
+        constraintName="fk_customer_shipping_address"
+        baseTableName="CUSTOMER" baseColumnNames="shippingAddressId"
+        referencedTableName="SHIPPING_ADDRESS" referencedColumnNames="shippingAddressId"
+        deferrable="false" initiallyDeferred="false" onDelete="CASCADE"/>
+
+<addForeignKeyConstraint
+        constraintName="fk_customer_billing_address"
+        baseTableName="CUSTOMER" baseColumnNames="billingAddressId"
+        referencedTableName="BILLING_ADDRESS" referencedColumnNames="billingAddressId"
+        deferrable="false" initiallyDeferred="false" onDelete="CASCADE"/>
+
+<addForeignKeyConstraint
+        constraintName="fk_customer_cart"
+        baseTableName="CUSTOMER" baseColumnNames="cartId"
+        referencedTableName="CART" referencedColumnNames="cartId"
+        deferrable="false" initiallyDeferred="false" onDelete="CASCADE"/>
+</changeSet>

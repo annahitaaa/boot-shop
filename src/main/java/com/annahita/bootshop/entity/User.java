@@ -8,11 +8,13 @@ import java.io.Serializable;
 import java.util.Set;
 
 
-@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "tbl_user")
 public class User extends Audit implements Serializable {
     private static final long serialVersionUID = 106L;
 
@@ -29,8 +31,8 @@ public class User extends Audit implements Serializable {
 
     private boolean enabled;
 
-    @OneToOne(mappedBy = "user")
-    private Customer customer;
+/*    @OneToOne(mappedBy = "user")
+    private Customer customer;*/
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -38,5 +40,5 @@ public class User extends Audit implements Serializable {
             joinColumns = @JoinColumn(name = "userId"),
             inverseJoinColumns = @JoinColumn(name = "authorityId")
     )
-    private Set<Authority> authorities;
+    private Set<Authority> authoritySet;
 }

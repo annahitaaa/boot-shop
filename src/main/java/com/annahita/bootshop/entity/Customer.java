@@ -10,18 +10,21 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
 import java.io.Serializable;
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Customer extends Audit implements Serializable {
+@Table(name= "TBL_CUSTOMER")
+@PrimaryKeyJoinColumn(name = "userId")
+public class Customer extends User implements Serializable {
 
     private static final Long serialVersionUID = 101l;
 
-    @Id
+/*    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long customerId;
+    private Long customerId;*/
 
     @NotEmpty
     @Size(min=5,max=30)
@@ -35,25 +38,24 @@ public class Customer extends Audit implements Serializable {
     @Phone
     private String customerPhoneNumber;
 
-    @Valid
-    @OneToOne(cascade = CascadeType.ALL)
+/*    //@Valid
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
-    private User user;
+    private User user;*/
 
-    private Boolean enabled;
-
-    @Valid
+    //@Valid
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "shippingAddressId")
     private ShippingAddress shippingAddress;
 
-    @Valid
+    //@Valid
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "billingAddressId")
     private BillingAddress billingAddress;
 
-//    @OneToOne
-//    @JoinColumn(name="cartId")
-//    private Cart cart;
+/*    @Valid
+    @OneToOne
+    @JoinColumn(name="cartId")
+    private Cart cart;*/
 
 }

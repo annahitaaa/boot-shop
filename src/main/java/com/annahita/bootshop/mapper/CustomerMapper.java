@@ -8,15 +8,16 @@ import org.mapstruct.*;
         uses = {
                 ShippingAddressMapper.class,
                 BillingAddressMapper.class,
-                UserMapper.class
+                UserMapper.class,
+//                CartMapper.class,
         })
 public interface CustomerMapper {
 
-
     CustomerDto toDTO(Customer customer);
 
-    @Mapping(target = "enabled", ignore = true)
-    @Mapping(target = "shippingAddress.customer", ignore = true)
-    @Mapping(target = "billingAddress.customer", ignore = true)
+    @Mapping(source = "billingAddressDto", target = "billingAddress")
+    @Mapping(source = "shippingAddressDto", target = "shippingAddress")
+    //@Mapping(source = "userDto", target = "user")
+//    @Mapping(source = "cartDto", target ="cart" )
     Customer toEntity(CustomerDto customerDto);
 }

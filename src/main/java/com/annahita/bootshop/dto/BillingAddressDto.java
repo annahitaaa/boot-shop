@@ -1,12 +1,12 @@
 package com.annahita.bootshop.dto;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.*;
 import lombok.*;
-
 
 @Getter
 @Setter
 public class BillingAddressDto {
+
     @NotEmpty
     private String city;
 

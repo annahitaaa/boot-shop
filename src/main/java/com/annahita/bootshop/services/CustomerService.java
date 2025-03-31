@@ -12,7 +12,7 @@ public interface CustomerService {
     Page<Customer> findAll(Pageable pageable);
 
     void save(CustomerDto customerDto);
-    void update(Customer customer);
+    void update(CustomerDto customerDto);
     void deleteById(Long customerId);
 
     Customer findById(Long customerId);

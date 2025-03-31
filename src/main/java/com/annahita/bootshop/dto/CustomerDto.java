@@ -9,7 +9,7 @@ import lombok.*;
 
 @Getter
 @Setter
-public class CustomerDto {
+public class CustomerDto extends UserDto {
 
     @NotEmpty
     @Size(min=5,max=30)
@@ -23,19 +23,15 @@ public class CustomerDto {
     @Phone
     private String customerPhoneNumber;
 
-    @NotEmpty
-    @Size(min=5,max=30)
-    private String username;
-
-    @NotEmpty
-    private String password;
-
     @Valid
     private ShippingAddressDto shippingAddressDto;
 
     @Valid
     private BillingAddressDto billingAddressDto;
 
-    @Valid
-    private UserDto userDto;
+/*    @Valid
+    private UserDto userDto;*/
+
+//    @Valid
+//    private CartDto cartDto;
 }

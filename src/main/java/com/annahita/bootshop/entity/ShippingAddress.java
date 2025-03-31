@@ -13,6 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ShippingAddress extends Audit implements Serializable {
+
     private static final Long serialVersionUID = 102l;
 
     @Id

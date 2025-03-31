@@ -1,12 +1,12 @@
 package com.annahita.bootshop.entity;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Set;
+
 
 @Entity
 @Getter
@@ -23,6 +23,6 @@ public class Authority extends Audit implements Serializable {
     @NotEmpty
     private String authorityType;
 
-    @ManyToMany(mappedBy = "authorities")
+    @ManyToMany(mappedBy = "authoritySet")
     private Set<User> users;
 }

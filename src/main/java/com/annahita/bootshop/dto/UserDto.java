@@ -5,6 +5,8 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
+import java.util.Set;
+
 
 @Getter
 @Setter
@@ -16,6 +18,6 @@ public class UserDto {
     @NotEmpty
     private String password;
 
-    @Valid
-    private AuthorityDto authorityDto;
+//    @Valid
+    private Set<AuthorityDto> authorityDtoSet;
 }

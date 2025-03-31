@@ -4,9 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.Set;
 
 
-
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,14 +19,12 @@ public class Cart extends Audit implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cartId;
 
-    @OneToOne(mappedBy = "cart")
-    private Customer customer;
-
-//    @OneToMany(mappedBy = "cart")
-//    private List<CartItem> cartItems;
-
     private double grandTotal;
+/*
+    @OneToOne(mappedBy = "cart")
+    private Customer customer;*/
 
-
+    @OneToMany(mappedBy = "cart")
+    private Set<CartItem> cartItems;
 
 }
