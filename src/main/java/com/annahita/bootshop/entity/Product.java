@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.Range;
 
 
 import java.io.Serializable;
-import java.util.List;
+
 
 @Entity
 @Getter
@@ -47,7 +47,10 @@ public class Product extends Audit implements Serializable {
     @Range(min = 0)
     private Double discount;
 
+    @NotEmpty
     private String productStatus;
+
+    @NotEmpty
     private String productCategory;
 
     /*@Lob
@@ -56,8 +59,8 @@ public class Product extends Audit implements Serializable {
    /* @Transient
     private MultipartFile productImage;*/
 
-    @OneToMany(mappedBy = "product")
-    private List<CartItem> cartItem;
+    /*@OneToMany(mappedBy = "product")
+    private List<CartItem> cartItem;*/
 
    /* @Transient
     private Map<String,String> categoryList;

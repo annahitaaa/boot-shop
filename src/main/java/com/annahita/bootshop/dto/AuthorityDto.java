@@ -4,7 +4,6 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 
-
 @Getter
 @Setter
 public class AuthorityDto {

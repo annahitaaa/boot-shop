@@ -1,11 +1,12 @@
-package com.annahita.bootshop.services;
+package com.annahita.bootshop.services.impl;
 
 import com.annahita.bootshop.dto.CustomerDto;
 import com.annahita.bootshop.entity.Authority;
 import com.annahita.bootshop.entity.Customer;
-import com.annahita.bootshop.entity.User;
 import com.annahita.bootshop.mapper.CustomerMapper;
 import com.annahita.bootshop.repository.CustomerRepository;
+import com.annahita.bootshop.services.AuthorityService;
+import com.annahita.bootshop.services.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
