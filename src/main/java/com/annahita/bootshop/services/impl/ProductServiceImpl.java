@@ -6,14 +6,12 @@ import com.annahita.bootshop.mapper.ProductMapper;
 import com.annahita.bootshop.repository.ProductRepository;
 import com.annahita.bootshop.services.ProductService;
 import jakarta.persistence.EntityNotFoundException;
-import liquibase.database.OfflineConnection;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -63,5 +61,12 @@ public class ProductServiceImpl implements ProductService {
     @Transactional(readOnly = true)
     public List<ProductDto.Info> getProducts() {
         return productMapper.toDtoInfoList(productRepository.findAll());
+    }
+
+    @Override
+    public byte[] getProductImage(Long productId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Product not found with ID: " + productId));
+        return product.getImg();
     }
 }

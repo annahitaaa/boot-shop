@@ -13,6 +13,6 @@ public class PhoneValidator implements ConstraintValidator<Phone, String> {
     public boolean isValid(String phoneNumber, ConstraintValidatorContext constraintValidatorContext) {
         if(phoneNumber == null)
             return false;
-        return phoneNumber.matches("09[1-5][1-9]\\d{7}$");
+        return phoneNumber.matches("09[1-9]\\d{8}$");
     }
 }

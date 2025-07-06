@@ -1,8 +1,10 @@
 package com.annahita.bootshop.dto;
 
+import com.annahita.bootshop.validator.ValidImage;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.validator.constraints.Range;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -41,6 +43,10 @@ public class ProductDto {
     public static class Create extends ProductDto {
         @NotEmpty(message = "ProductCategory model cannot be empty")
         private String productCategory;
+
+        @NotNull(message = "Image cannot be null")
+        @ValidImage(optional = false)
+        private MultipartFile image;
     }
     @Getter
     @Setter
@@ -50,12 +56,15 @@ public class ProductDto {
 
         @NotEmpty(message = "ProductCategory model cannot be empty")
         private String productCategory;
+
+        private byte[] image;
     }
 
     @Getter
     @Setter
     public static class Update extends ProductDto {
-
+        @ValidImage(optional = true)
+        private MultipartFile image;
     }
     @Setter
     @Getter

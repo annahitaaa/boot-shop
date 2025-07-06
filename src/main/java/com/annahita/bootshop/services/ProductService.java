@@ -10,4 +10,5 @@ public interface ProductService {
     void delete(Long id);
     ProductDto.Info getProductById(Long productId);
     List<ProductDto.Info> getProducts();
+    byte[] getProductImage(Long productId);
 }

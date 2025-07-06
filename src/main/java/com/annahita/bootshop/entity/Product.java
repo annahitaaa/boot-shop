@@ -53,11 +53,8 @@ public class Product extends Audit implements Serializable {
     @NotEmpty
     private String productCategory;
 
-    /*@Lob
-    private byte[] img;*/
-
-   /* @Transient
-    private MultipartFile productImage;*/
+    @Lob
+    private byte[] img;
 
     /*@OneToMany(mappedBy = "product")
     private List<CartItem> cartItem;*/
