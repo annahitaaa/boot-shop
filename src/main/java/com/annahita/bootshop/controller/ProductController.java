@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -68,9 +67,4 @@ public class ProductController {
                 .body(image);
     }
 
-   /* @PostMapping(value = "/{productId}/image", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public ResponseEntity<String> uploadProductImage(@PathVariable Long productId, @RequestPart("image") MultipartFile image) {
-        productService.uploadProductImage(productId, image);
-        return ResponseEntity.ok("Image uploaded successfully for product ID: " + productId);
-    }*/
 }

@@ -1,7 +1,7 @@
 package com.annahita.bootshop.services;
 
 import com.annahita.bootshop.dto.ProductDto;
-import org.springframework.web.multipart.MultipartFile;
+
 
 import java.util.List;
 
@@ -12,5 +12,4 @@ public interface ProductService {
     ProductDto.Info getProductById(Long productId);
     List<ProductDto.Info> getProducts();
     byte[] getProductImage(Long productId);
-   // void uploadProductImage(Long productId, MultipartFile image);
 }

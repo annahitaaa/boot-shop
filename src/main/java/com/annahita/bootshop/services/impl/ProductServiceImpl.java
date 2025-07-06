@@ -9,9 +9,8 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -71,16 +70,4 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new RuntimeException("Product not found with ID: " + productId));
         return product.getImg();
     }
-   /* @Override
-    @Transactional
-    public void uploadProductImage(Long productId, MultipartFile image) {
-        Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new EntityNotFoundException("Product not found with ID: " + productId));
-        try {
-            product.setImg(image.getBytes());
-            productRepository.save(product);
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to upload image for product ID: " + productId, e);
-        }
-    }*/
 }
